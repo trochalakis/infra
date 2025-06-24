@@ -3,16 +3,18 @@ services:
     image: ghcr.io/caddybuilds/caddy-cloudflare:latest
     container_name: caddy
     restart: unless-stopped
+    entrypoint: ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile", "--envfile", "/run/secrets/CF_API_TOKEN"]
     ports:
       - "80:80"
       - "443:443"
       - "443:443/udp"
     volumes:
       - /etc/caddy/Caddyfile:/etc/caddy/Caddyfile
-      - /etc/caddy/.env:/etc/caddy/.env
       - /etc/caddy/sites:/etc/caddy/sites
       - /etc/caddy/data:/data
       - /etc/caddy/config:/config
+    secrets:
+      - CF_API_TOKEN
     networks:
       - caddy-net
   authelia:
@@ -32,6 +34,10 @@ services:
       - caddy-net
     environment:
       - TZ=America/Los_Angeles
+
+secrets:
+  CF_API_TOKEN:
+    file: /secrets/CF_API_TOKEN.txt
 
 networks:
   caddy-net:
