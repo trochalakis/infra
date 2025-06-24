@@ -1,1 +1,40 @@
+services:
+  caddy:
+    image: caddy
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - /volumes/caddy/caddyfiles/Caddyfile:/etc/caddy/Caddyfile
+      - /volumes/caddy/caddyfiles/caddyfiles:/etc/caddy/caddyfiles
+      - /volumes/caddy/site:/srv
+      - /volumes/caddy/data:/data
+      - /volumes/caddy/config:/config
+    networks:
+      - caddy-auth
+  authelia:
+    image: authelia/authelia
+    container_name: authelia
+    restart: unless-stopped
+    command:
+      - 'authelia'
+      - '--config=/config/configuration.yml'
+      - '--config=/config/config-acl.yml'
+      - '--config=/config/config-auth.yml'
+      - '--config=/config/config-notifier.yml'
+      - '--config=/config/config-oidc.yml'
+    volumes:
+      - "/volumes/authelia/config:/config" #change this to a shared folder on your system. DO NOT use a "volume"
+    ports:
+      - 9091:9091
+    networks:
+      - caddy-net
+    environment:
+      - TZ=America/Los_Angeles
 
+networks:
+  caddy-net:
+      name: caddy-net
