@@ -10,9 +10,8 @@ services:
     volumes:
       - /etc/caddy/Caddyfile:/etc/caddy/Caddyfile
       - /etc/caddy/sites:/etc/caddy/sites
-      - /volumes/caddy/site:/srv
-      - /volumes/caddy/data:/data
-      - /volumes/caddy/config:/config
+      - /etc/caddy/data:/data
+      - /etc/caddy/config:/config
     networks:
       - caddy-net
   authelia:
