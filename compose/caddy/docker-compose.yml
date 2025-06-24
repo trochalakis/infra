@@ -26,7 +26,7 @@ services:
       - '--config=/config/config-notifier.yml'
       - '--config=/config/config-oidc.yml'
     volumes:
-      - "/etc/authelia:/config" #change this to a shared folder on your system. DO NOT use a "volume"
+      - "/etc/authelia:/config"
     networks:
       - caddy-net
     environment:
