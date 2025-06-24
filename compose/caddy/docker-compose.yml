@@ -14,7 +14,7 @@ services:
       - /volumes/caddy/data:/data
       - /volumes/caddy/config:/config
     networks:
-      - caddy-auth
+      - caddy-net
   authelia:
     image: authelia/authelia
     container_name: authelia
