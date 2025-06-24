@@ -9,6 +9,7 @@ services:
       - "443:443/udp"
     volumes:
       - /etc/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /etc/caddy/sites:/etc/caddy/sites
       - /volumes/caddy/site:/srv
       - /volumes/caddy/data:/data
       - /volumes/caddy/config:/config
@@ -26,7 +27,7 @@ services:
       - '--config=/config/config-notifier.yml'
       - '--config=/config/config-oidc.yml'
     volumes:
-      - "/volumes/authelia/config:/config" #change this to a shared folder on your system. DO NOT use a "volume"
+      - "/etc/authelia:/config" #change this to a shared folder on your system. DO NOT use a "volume"
     networks:
       - caddy-net
     environment:
