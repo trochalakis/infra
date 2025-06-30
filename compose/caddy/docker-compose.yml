@@ -37,7 +37,7 @@ services:
 
 secrets:
   CF_API_TOKEN:
-    file: /secrets/CF_API_TOKEN.txt
+    file: /var/lib/secrets/CF_API_TOKEN.txt
 
 networks:
   caddy-net:
