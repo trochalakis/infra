@@ -56,7 +56,7 @@ services:
 
 secrets:
   CF_API_TOKEN:
-    file: /var/lib/secrets/CF_API_TOKEN.txt
+    file: /var/lib/secrets/CF_API_TOKEN
   AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD:
     file: /var/lib/secrets/AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD
   AUTHELIA_DUO_API_INTEGRATION_KEY:
