@@ -31,6 +31,7 @@ services:
     volumes:
       - "/etc/authelia:/config"
     environment:
+      TZ: 'America/Los_Angeles'
       AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE: '/run/secrets/AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD'
       AUTHELIA_DUO_API_INTEGRATION_KEY_FILE: '/run/secrets/AUTHELIA_DUO_API_INTEGRATION_KEY'
       AUTHELIA_DUO_API_SECRET_KEY_FILE: '/run/secrets/AUTHELIA_DUO_API_SECRET_KEY'
@@ -52,8 +53,6 @@ services:
       - AUTHELIA_IDENTITY_PROVIDERS_OIDC_JKWS_KEY
     networks:
       - caddy-net
-    environment:
-      - TZ=America/Los_Angeles
 
 secrets:
   CF_API_TOKEN:
