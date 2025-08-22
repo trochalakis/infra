@@ -4,7 +4,7 @@ services:
     container_name: truecommand
     restart: unless-stopped
     volumes:
-        - "/opt/truecommand:/data"
+        - "/opt/truecommand/data:/data"
     ports:
         - "80:80"
         - "443:443"
