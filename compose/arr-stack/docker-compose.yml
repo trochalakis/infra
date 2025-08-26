@@ -5,11 +5,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=America/Los_Angeles
     volumes:
-      - /path/to/radarr/data:/config
-      - /path/to/movies:/movies #optional
-      - /path/to/download-client-downloads:/downloads #optional
+      - /opt/radarr/data:/config
+      - /media/movies:/movies
+      - /syncthing:/syncthing
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -20,11 +20,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=America/Los_Angeles
     volumes:
-      - /path/to/sonarr/data:/config
-      - /path/to/tvseries:/tv #optional
-      - /path/to/downloadclient-downloads:/downloads #optional
+      - /opt/sonarr/data:/config
+      - /media/tv:/tv
+      - /syncthing:/syncthing
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -35,11 +35,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=America/Los_Angeles
     volumes:
-      - /path/to/lidarr/config:/config
-      - /path/to/music:/music #optional
-      - /path/to/downloads:/downloads #optional
+      - /opt/lidarr/config:/config
+      - /media/music:/music #optional
+      - /syncthing:/syncthing
     ports:
       - 8686:8686
     restart: unless-stopped
@@ -50,9 +50,9 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=America/Los_Angeles
     volumes:
-      - /path/to/prowlarr/data:/config
+      - /opt/prowlarr/data:/config
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -63,11 +63,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=America/Los_Angeles
     volumes:
-      - /path/to/bazarr/config:/config
-      - /path/to/movies:/movies #optional
-      - /path/to/tv:/tv #optional
+      - /opt/bazarr/config:/config
+      - /media/movies:/movies #optional
+      - /media/tv:/tv #optional
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -78,9 +78,9 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=America/Los_Angeles
     volumes:
-      - /path/to/overseerr/config:/config
+      - /opt/overseerr/config:/config
     ports:
       - 5055:5055
     restart: unless-stopped
