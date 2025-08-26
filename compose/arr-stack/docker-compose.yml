@@ -3,12 +3,12 @@ services:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1500
+      - PGID=1500
       - TZ=America/Los_Angeles
     volumes:
       - /opt/radarr/data:/config
-      - /media/movies:/movies
+      - /mnt/media/movies:/movies
       - /syncthing:/syncthing
     ports:
       - 7878:7878
@@ -18,12 +18,12 @@ services:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1500
+      - PGID=1500
       - TZ=America/Los_Angeles
     volumes:
       - /opt/sonarr/data:/config
-      - /media/tv:/tv
+      - /mnt/media/tv:/tv
       - /syncthing:/syncthing
     ports:
       - 8989:8989
@@ -33,12 +33,12 @@ services:
     image: lscr.io/linuxserver/lidarr:latest
     container_name: lidarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1500
+      - PGID=1500
       - TZ=America/Los_Angeles
     volumes:
       - /opt/lidarr/config:/config
-      - /media/music:/music #optional
+      - /mnt/media/music:/music #optional
       - /syncthing:/syncthing
     ports:
       - 8686:8686
@@ -48,8 +48,8 @@ services:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1500
+      - PGID=1500
       - TZ=America/Los_Angeles
     volumes:
       - /opt/prowlarr/data:/config
@@ -61,13 +61,13 @@ services:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1500
+      - PGID=1500
       - TZ=America/Los_Angeles
     volumes:
       - /opt/bazarr/config:/config
-      - /media/movies:/movies #optional
-      - /media/tv:/tv #optional
+      - /mnt/media/movies:/movies #optional
+      - /mnt/media/tv:/tv #optional
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -76,8 +76,8 @@ services:
     image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1500
+      - PGID=1500
       - TZ=America/Los_Angeles
     volumes:
       - /opt/overseerr/config:/config
