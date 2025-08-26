@@ -12,6 +12,8 @@ services:
       - /syncthing:/syncthing
     ports:
       - 7878:7878
+    networks:
+      - arr-net
     restart: unless-stopped
     
   sonarr:
@@ -27,6 +29,8 @@ services:
       - /syncthing:/syncthing
     ports:
       - 8989:8989
+    networks:
+      - arr-net
     restart: unless-stopped
     
   lidarr:
@@ -42,6 +46,8 @@ services:
       - /syncthing:/syncthing
     ports:
       - 8686:8686
+    networks:
+      - arr-net
     restart: unless-stopped
 
   prowlarr:
@@ -55,6 +61,8 @@ services:
       - /opt/prowlarr/data:/config
     ports:
       - 9696:9696
+    networks:
+      - arr-net
     restart: unless-stopped
 
   bazarr:
@@ -70,6 +78,8 @@ services:
       - /mnt/media/tv:/tv #optional
     ports:
       - 6767:6767
+    networks:
+      - arr-net
     restart: unless-stopped
 
   overseerr:
@@ -83,4 +93,10 @@ services:
       - /opt/overseerr/config:/config
     ports:
       - 5055:5055
+    networks:
+      - arr-net
     restart: unless-stopped
+
+networks:
+  arr-net:
+    name: arr-net
