@@ -105,6 +105,8 @@ services:
       - PUID=1500
       - PGID=1500
       - TZ=America/Los_Angeles
+    networks:
+      - arr-net
     volumes:
       - /syncthing/config:/config
       - /syncthing/data:/data
