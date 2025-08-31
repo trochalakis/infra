@@ -9,7 +9,7 @@ services:
     volumes:
       - /opt/radarr/data:/config
       - /mnt/media/movies:/movies
-      - /syncthing:/syncthing
+      - /syncthing/data:/syncthing
     ports:
       - 7878:7878
     networks:
@@ -26,7 +26,7 @@ services:
     volumes:
       - /opt/sonarr/data:/config
       - /mnt/media/tv:/tv
-      - /syncthing:/syncthing
+      - /syncthing/data:/syncthing
     ports:
       - 8989:8989
     networks:
@@ -43,7 +43,7 @@ services:
     volumes:
       - /opt/lidarr/config:/config
       - /mnt/media/music:/music #optional
-      - /syncthing:/syncthing
+      - /syncthing/data:/syncthing
     ports:
       - 8686:8686
     networks:
