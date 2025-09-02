@@ -146,7 +146,6 @@ services:
       - /opt/tdarr/configs:/app/configs
       - /opt/tdarr/logs:/app/logs
       - /mnt/media:/media
-      - /transcode_cache:/temp
 
 networks:
   arr-net:
