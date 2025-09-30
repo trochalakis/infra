@@ -14,6 +14,8 @@ services:
           OAUTH_SCOPES: 'openid profile email groups'
           OPENID_REDIRECT_URI: 'https://openwebui.trochalakis.net/oauth/oidc/callback'
           OAUTH_MERGE_ACCOUNTS_BY_EMAIL: true
+        secrets:
+          - OAUTH_CLIENT_SECRET
         volumes:
           - /opt/openwebui/data:/app/backend/data
 secrets:
