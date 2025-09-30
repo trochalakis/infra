@@ -15,7 +15,7 @@ services:
           OPENID_REDIRECT_URI: 'https://openwebui.trochalakis.net/oauth/oidc/callback'
           OAUTH_MERGE_ACCOUNTS_BY_EMAIL: true
         volumes:
-          - /opt/openwebui:/app/backend/data
+          - /opt/openwebui/data:/app/backend/data
 secrets:
   OAUTH_CLIENT_SECRET:
     file: /var/lib/secrets/OAUTH_CLIENT_SECRET
