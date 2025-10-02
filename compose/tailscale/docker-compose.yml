@@ -1,1 +1,15 @@
-
+services:
+  tailscale:
+    image: tailscale/tailscale:latest
+    hostname: tailscale
+    environment:
+      - TS_AUTHKEY=tskey-client-notAReal-OAuthClientSecret1Atawk
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_USERSPACE=false
+    volumes:
+      - /opt/tailscale/state:/var/lib/tailscale
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - net_admin
+    restart: unless-stopped
