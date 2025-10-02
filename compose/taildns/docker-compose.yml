@@ -3,17 +3,14 @@ services:
     image: adguard/adguardhome
     container_name: adguard_home
     restart: unless-stopped
-    ports:
-      - 53:53/tcp # plain dns over tcp
-      - 53:53/udp # plain dns over udp
-      - 80:80/tcp # http web interface
-      - 3000:3000/tcp # initial setup web interface
+    network_mode: host
     volumes:
       - /opt/adguard/config:/opt/adguardhome/conf # app configuration
       - /opt/adguard/work:/opt/adguardhome/work # app working directory
   tailscale:
     image: tailscale/tailscale:latest
     hostname: tailscale
+    network_mode: host
     environment:
       - TS_AUTHKEY=tskey-client-notAReal-OAuthClientSecret1Atawk
       - TS_STATE_DIR=/var/lib/tailscale
