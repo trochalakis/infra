@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
-    environment:
+#    environment:
       # - HTTP_ALLOWED=true # uncomment this if accessing it over a non-https connection
     volumes:
       - /opt/convertx/data:/app/data
