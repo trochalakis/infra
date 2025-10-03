@@ -12,4 +12,6 @@ services:
     privileged: true
     cap_add:
       - net_admin
+      - net_raw
+      - sys_module
     restart: unless-stopped
