@@ -9,6 +9,7 @@ services:
       - /opt/tailscale/state:/var/lib/tailscale
     devices:
       - /dev/net/tun:/dev/net/tun
+    privileged: true
     cap_add:
       - net_admin
     restart: unless-stopped
