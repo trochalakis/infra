@@ -3,6 +3,8 @@ services:
         image: 'shlinkio/shlink:stable'
         container_name: shlink
         restart: unless-stopped
+        networks:
+            - shnet
         environment:
             - GEOLITE_LICENSE_KEY=kjh23ljkbndskj345
             - IS_HTTPS_ENABLED=true
@@ -13,7 +15,12 @@ services:
         image: shlinkio/shlink-web-client
         container_name: shlink-web
         restart: unless-stopped
+        networks:
+            - shnet
         volumes:
             - '/opt/shlink/servers.json:/usr/share/nginx/html/servers.json'
         ports:
             - '9000:8080'
+networks:
+    shnet:
+        name: shnet
