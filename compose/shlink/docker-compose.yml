@@ -1,0 +1,19 @@
+services:
+    shlink:
+        image: 'shlinkio/shlink:stable'
+        container_name: shlink
+        restart: unless-stopped
+        environment:
+            - GEOLITE_LICENSE_KEY=kjh23ljkbndskj345
+            - IS_HTTPS_ENABLED=true
+            - DEFAULT_DOMAIN=s.test
+        ports:
+            - '8080:8080'
+    shlink-web:
+        image: shlinkio/shlink-web-client
+        container_name: shlink-web
+        restart: unless-stopped
+        volumes:
+            - '/opt/shlink/servers.json:/usr/share/nginx/html/servers.json'
+        ports:
+            - '8000:8080'
