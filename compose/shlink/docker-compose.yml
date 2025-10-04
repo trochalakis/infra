@@ -6,7 +6,7 @@ services:
         environment:
             - GEOLITE_LICENSE_KEY=kjh23ljkbndskj345
             - IS_HTTPS_ENABLED=true
-            - DEFAULT_DOMAIN=s.test
+            - DEFAULT_DOMAIN=jmpto.xyz
         ports:
             - '8080:8080'
     shlink-web:
