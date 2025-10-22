@@ -17,4 +17,4 @@ services:
       - PGID=1000
       - OIDC_ENABLED=true
       - OIDC_ISSUER_URL=https://auth.trochalakis.com
-      - OIDC_SCOPES='openid profile email'
+      - OIDC_SCOPES=openid profile email
