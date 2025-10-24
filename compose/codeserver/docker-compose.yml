@@ -9,5 +9,5 @@ services:
     volumes:
       - /opt/vscode/config:/config
     ports:
-      - 3000:3000
+      - 21849:3000
     restart: unless-stopped
