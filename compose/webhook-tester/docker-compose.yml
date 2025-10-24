@@ -1,0 +1,8 @@
+services:
+    webhooktester:
+        image: 'ghcr.io/tarampampam/webhook-tester:2'
+        container_name: webhook-tester
+        restart: unless-stopped
+        ports:
+            - '8080:8080/tcp'
+        tty: true
