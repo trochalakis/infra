@@ -3,6 +3,8 @@ services:
         container_name: monica
         image: monica:apache
         restart: unless-stopped
+        networks:
+            - philotes
         environment:
             - APP_ENV=production
             - DB_HOST=db
@@ -22,6 +24,8 @@ services:
         image: mariadb:11
         container_name: mariadb
         restart: unless-stopped
+        networks:
+            - philotes
         environment:
           - MYSQL_RANDOM_ROOT_PASSWORD=true
           - MYSQL_DATABASE=monica
@@ -31,6 +35,10 @@ services:
             - /opt/monica/mariadb:/var/lib/mysql
         secrets:
           - DB_PASSWORD
+
+networks:
+    philotes-net:
+        name: philotes-net
 
 secrets:
   DB_PASSWORD:
