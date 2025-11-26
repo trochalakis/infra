@@ -3,6 +3,8 @@ services:
         container_name: monica
         image: monica:apache
         restart: unless-stopped
+        ports:
+            - 4080:80
         networks:
             - philotes
         environment:
