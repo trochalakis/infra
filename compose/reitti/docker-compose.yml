@@ -59,7 +59,7 @@ services:
     image: rtuszik/photon-docker:1.2.1
     environment:
       - UPDATE_STRATEGY=PARALLEL
-      - REGION=de #set your main country code here to save space or drop this line to fetch the whole index.
+      - REGION=en #set your main country code here to save space or drop this line to fetch the whole index.
     volumes:
       - photon-data:/photon/data
 
