@@ -1,0 +1,22 @@
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/homarr-labs/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
+      - /opt/homarr/appdata:/appdata
+    environment:
+      - SECRET_ENCRYPTION_KEY=0d417aed4d2bda791a5768619f0fcf71f1e781685bda7f82d99bfb648a9cb473
+      - AUTH_PROVIDERS=oidc
+      - AUTH_OIDC_ISSUER=https://auth.trochalakis.com
+      - AUTH_OIDC_CLIENT_ID=homarr
+      - AUTH_OIDC_CLIENT_SECRET=
+      - AUTH_OIDC_CLIENT_NAME=Authelia
+      - AUTH_OIDC_SCOPE_OVERWRITE=openid email profile groups
+      - AUTH_OIDC_GROUPS_ATTRIBUTE=groups
+      - AUTH_LOGOUT_REDIRECT_URL=https://auth.trochalakis.com/logout
+      - AUTH_OIDC_AUTO_LOGIN=true
+      - AUTH_OIDC_FORCE_USERINFO=true
+    ports:
+      - '7575:7575'

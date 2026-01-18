@@ -1,0 +1,24 @@
+services:
+  freshrss:
+    image: freshrss/freshrss
+    container_name: freshrss
+    environment:
+      - PUID=1000
+      - PGID=994
+      - TZ=America/Los_Angeles
+      - OIDC_ENABLED=1
+      - OIDC_PROVIDER_METADATA_URL=https://auth.trochalakis.com/.well-known/openid-configuration
+      - OIDC_CLIENT_ID=freshrss
+      - OIDC_CLIENT_SECRET=2
+      - OIDC_CLIENT_CRYPTO_KEY=
+      - OIDC_REMOTE_USER_CLAIM=preferred_username
+      - OIDC_SCOPES=openid groups email profile
+      - OIDC_X_FORWARDED_HEADERS=X-Forwarded-Host X-Forwarded-Port X-Forwarded-Proto
+      - CRON_MIN=13,43
+    volumes:
+      - /opt/freshrss/config:/config
+      - /opt/freshrss/data:/var/www/FreshRSS/data
+      - /opt/freshrss/extensions:/var/www/FreshRSS/extensions
+    ports:
+      - 8098:80
+    restart: unless-stopped
