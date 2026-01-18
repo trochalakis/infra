@@ -1,0 +1,13 @@
+services:
+  fasten:
+    image: ghcr.io/fastenhealth/fasten-onprem:main
+    hostname: secure
+    environment:
+      - HOST_IP=192.168.5.91
+      - HOST_PORT=9090
+    ports:
+      - "9090:8080"
+    volumes:
+      - /opt/fasten/db:/opt/fasten/db
+      - /opt/fasten/cache:/opt/fasten/cache
+      - /opt/fasten/certs:/opt/fasten/certs/shared

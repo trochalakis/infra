@@ -1,0 +1,48 @@
+services:
+    monica:
+        container_name: monica
+        image: monica:apache
+        restart: unless-stopped
+        ports:
+            - 4080:80
+        networks:
+            - philotes
+        environment:
+            - APP_ENV=production
+            - DB_HOST=db
+            - DB_DATABASE=monica
+            - DB_USERNAME=monica
+            - DB_PASSWORD_FILE=/run/secrets/DB_PASSWORD
+            - LOG_CHANNEL=stderr
+            - CACHE_DRIVER=database
+            - SESSION_DRIVER=database
+            - QUEUE_DRIVER=sync
+        volumes:
+            - /opt/monica/data:/var/www/html/storage
+        secrets:
+          - DB_PASSWORD
+        
+    db:
+        image: mariadb:11
+        container_name: mariadb
+        restart: unless-stopped
+        networks:
+            - philotes
+        environment:
+          - MYSQL_RANDOM_ROOT_PASSWORD=true
+          - MYSQL_DATABASE=monica
+          - MYSQL_USER=monica
+          - MYSQL_PASSWORD_FILE=/run/secrets/DB_PASSWORD
+        volumes:
+            - /opt/monica/mariadb:/var/lib/mysql
+        secrets:
+          - DB_PASSWORD
+
+networks:
+    philotes-net:
+        name: philotes-net
+
+secrets:
+  DB_PASSWORD:
+    file: /var/lib/secrets/DB_PASSWORD
+    

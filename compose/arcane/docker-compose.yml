@@ -1,0 +1,20 @@
+services:
+  arcane:
+    image: ghcr.io/ofkm/arcane:latest
+    container_name: arcane
+    restart: unless-stopped
+    ports:
+      - '3552:3552'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/arcane/data:/app/data
+      - /opt/arcane/projects:/app/data/projects
+    env_file:
+      - .env
+    environment:
+      - APP_URL=https://arcane.trochalakis.net
+      - PUID=1000
+      - PGID=1000
+      - OIDC_ENABLED=true
+      - OIDC_ISSUER_URL=https://auth.trochalakis.com
+      - OIDC_SCOPES=openid profile email

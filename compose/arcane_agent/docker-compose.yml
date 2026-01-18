@@ -1,0 +1,14 @@
+services:
+  arcane-agent:
+    image: ghcr.io/ofkm/arcane-headless:latest
+    container_name: arcane-agent
+    ports:
+      - '3553:3553'
+    env_file:
+      - .env
+    environment:
+      - AGENT_MODE=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/arcane/data:/app/data
+    restart: unless-stopped
